@@ -31,17 +31,17 @@ func NewRouter() *Router {
 // It implements the http.Handler interface, so it can be registered to serve
 // requests:
 //
-//     var router = mux.NewRouter()
+//	var router = mux.NewRouter()
 //
-//     func main() {
-//         http.Handle("/", router)
-//     }
+//	func main() {
+//	    http.Handle("/", router)
+//	}
 //
 // Or, for Google App Engine, register it in a init() function:
 //
-//     func init() {
-//         http.Handle("/", router)
-//     }
+//	func init() {
+//	    http.Handle("/", router)
+//	}
 //
 // This will send all incoming requests to the router.
 type Router struct {
@@ -300,6 +300,16 @@ func (r *Router) Handle(path string, handler http.Handler) *Route {
 func (r *Router) HandleFunc(path string, f func(http.ResponseWriter,
 	*http.Request)) *Route {
 	return r.NewRoute().Path(path).HandlerFunc(f)
+}
+
+func (r *Router) GET(path string, f func(http.ResponseWriter,
+	*http.Request)) *Route {
+	return r.NewRoute().Path(path).HandlerFunc(f).Methods("GET")
+}
+
+func (r *Router) POST(path string, f func(http.ResponseWriter,
+	*http.Request)) *Route {
+	return r.NewRoute().Path(path).HandlerFunc(f).Methods("POST")
 }
 
 // Headers registers a new route with a matcher for request header values.

@@ -1,9 +1,9 @@
 # gorilla/mux
 
-![testing](https://github.com/gorilla/mux/actions/workflows/test.yml/badge.svg)
+![testing](https://github.com/ektlang/mux/actions/workflows/test.yml/badge.svg)
 [![codecov](https://codecov.io/github/gorilla/mux/branch/main/graph/badge.svg)](https://codecov.io/github/gorilla/mux)
-[![godoc](https://godoc.org/github.com/gorilla/mux?status.svg)](https://godoc.org/github.com/gorilla/mux)
-[![sourcegraph](https://sourcegraph.com/github.com/gorilla/mux/-/badge.svg)](https://sourcegraph.com/github.com/gorilla/mux?badge)
+[![godoc](https://godoc.org/github.com/ektlang/mux?status.svg)](https://godoc.org/github.com/ektlang/mux)
+[![sourcegraph](https://sourcegraph.com/github.com/ektlang/mux/-/badge.svg)](https://sourcegraph.com/github.com/ektlang/mux?badge)
 
 
 ![Gorilla Logo](https://cloud-cdn.questionable.services/gorilla-icon-64.png)
@@ -41,7 +41,7 @@ The name mux stands for "HTTP request multiplexer". Like the standard `http.Serv
 With a [correctly configured](https://golang.org/doc/install#testing) Go toolchain:
 
 ```sh
-go get -u github.com/gorilla/mux
+go get -u github.com/ektlang/mux
 ```
 
 ## Examples
@@ -230,7 +230,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/gorilla/mux"
+	"github.com/ektlang/mux"
 )
 
 // spaHandler implements the http.Handler interface, so we can use it
@@ -388,7 +388,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/gorilla/mux"
+	"github.com/ektlang/mux"
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
@@ -451,7 +451,7 @@ import (
     "os/signal"
     "time"
 
-    "github.com/gorilla/mux"
+    "github.com/ektlang/mux"
 )
 
 func main() {
@@ -502,7 +502,7 @@ func main() {
 
 ### Middleware
 
-Mux supports the addition of middlewares to a [Router](https://godoc.org/github.com/gorilla/mux#Router), which are executed in the order they are added if a match is found, including its subrouters.
+Mux supports the addition of middlewares to a [Router](https://godoc.org/github.com/ektlang/mux#Router), which are executed in the order they are added if a match is found, including its subrouters.
 Middlewares are (typically) small pieces of code which take one request, do something with it, and pass it down to another middleware or the final handler. Some common use cases for middleware are request logging, header manipulation, or `ResponseWriter` hijacking.
 
 Mux middlewares are defined using the de facto standard type:
@@ -582,7 +582,7 @@ Note: The handler chain will be stopped if your middleware doesn't call `next.Se
 
 ### Handling CORS Requests
 
-[CORSMethodMiddleware](https://godoc.org/github.com/gorilla/mux#CORSMethodMiddleware) intends to make it easier to strictly set the `Access-Control-Allow-Methods` response header.
+[CORSMethodMiddleware](https://godoc.org/github.com/ektlang/mux#CORSMethodMiddleware) intends to make it easier to strictly set the `Access-Control-Allow-Methods` response header.
 
 * You will still need to use your own CORS handler to set the other CORS headers such as `Access-Control-Allow-Origin`
 * The middleware will set the `Access-Control-Allow-Methods` header to all the method matchers (e.g. `r.Methods(http.MethodGet, http.MethodPut, http.MethodOptions)` -> `Access-Control-Allow-Methods: GET,PUT,OPTIONS`) on a route
@@ -596,7 +596,7 @@ package main
 
 import (
 	"net/http"
-	"github.com/gorilla/mux"
+	"github.com/ektlang/mux"
 )
 
 func main() {
@@ -783,7 +783,7 @@ package main
 import (
     "net/http"
     "log"
-    "github.com/gorilla/mux"
+    "github.com/ektlang/mux"
 )
 
 func YourHandler(w http.ResponseWriter, r *http.Request) {
